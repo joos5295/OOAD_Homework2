@@ -1,0 +1,102 @@
+import java.util.Vector;
+
+public class Shape
+{
+	protected int x;
+	protected int y;
+	protected int z;
+	protected String name;
+
+	public void display()
+	{
+		System.out.println(name);
+	}
+}
+
+class Triangle extends Shape
+{
+	private int s1;
+	private int s2;
+	private int s3;
+
+	public Triangle()
+	{
+		name = "Triangle";
+	}
+}
+
+class Circle extends Shape
+{
+	private int r;
+
+	public Circle()
+	{
+		name = "Circle";
+	}
+}
+
+class Square extends Shape
+{
+	private int s;
+
+	public Square()
+	{
+		name = "Square";
+	}
+}
+
+class Database
+{
+	private Vector<Shape> shapelist;
+	private int listSize;
+
+	public Database(Vector<Shape> sl)
+	{
+		shapelist = sl;
+		listSize = shapelist.size();
+	}
+	public void displaySize()
+	{
+      System.out.println(listSize);
+	}
+	public void displayList()
+	{
+		for (int i = 0; i < listSize; i++)
+		{
+			shapelist.elementAt(i).display();
+		}
+	}
+}
+
+public class ShapeSorter
+{
+	public static void main(String[] args)
+	{
+		Vector<Shape> vect = new Vector<Shape>();
+	
+		Shape t1 = new Triangle();
+		Shape t2 = new Triangle();
+		Shape t3 = new Triangle();
+	
+		Shape c1 = new Circle();
+
+		Shape s1 = new Square();
+		Shape s2 = new Square();
+		Shape s3 = new Square();
+		Shape s4 = new Square();
+
+		vect.add(t1);
+		vect.add(c1);
+		vect.add(t2);
+		vect.add(s1);
+		vect.add(s2);
+		vect.add(t3);
+		vect.add(s3);
+		vect.add(s4);
+
+		Database DB = new Database(vect);
+
+		DB.displaySize();
+		DB.displayList();
+	}
+}
